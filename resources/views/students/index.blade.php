@@ -49,12 +49,12 @@
             <td>
                 <form action="{{ route('student_store') }}" method="POST">
                     @csrf
-            <th><input type="text" name="name" placeholder="Enter First Name"></th>
-            <th><input type="text" name="surname" placeholder="Enter Last Name"></th>
-            <th><input type="text" name="birth_place" placeholder="Enter Birthplace"></th>
-            <th><input type="date" name="birth_date"></th>
-            <th><button type="submit">INSERT</button></th>
-            <th><button type="reset">CLEAR</button></th>
+           <th><input type="text" name="name" placeholder="Enter First Name" class="tablo-input"></th>
+                <th><input type="text" name="surname" placeholder="Enter Last Name" class="tablo-input"></th>
+                <th><input type="text" name="birth_place" placeholder="Enter Birthplace" class="tablo-input"></th>
+                <th><input type="date" name="birth_date" class="tablo-input"></th>
+                <th><button type="submit">INSERT</button></th>
+                <th><button type="reset">CLEAR</button></th>
             </form>
             </td>
 
@@ -137,6 +137,21 @@
         {{ $students->appends(request()->query())->links() }}
     </div>
 
+
+
+    <script>
+        document.querySelectorAll('.tablo-input').forEach((input, index, inputs) => {
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const nextInput = inputs[index + 1];
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

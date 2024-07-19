@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 
+use function Laravel\Prompts\alert;
 
 class StudentController extends Controller
 {
@@ -76,7 +77,8 @@ class StudentController extends Controller
         ]);
 
         $student->update($request->all());
-        //dd(request());
+        //$request->all();
+        // dd(request());
         return redirect()->route('students_index');
     }
 
