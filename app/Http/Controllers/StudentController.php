@@ -76,7 +76,12 @@ class StudentController extends Controller
             'birth_date' => 'required|date',
         ]);
 
-        $student->update($request->all());
+        $student->where('id', $request->input('id'))->update([
+            'name'=> $request->input('name'),
+            'surname'=> $request->input('surname'),
+            'birth_place'=> $request->input('birth_place'),
+            'birth_date'=> $request->input('birth_date'),
+        ]);
         //$request->all();
         // dd(request());
         return redirect()->route('students_index');
